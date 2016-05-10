@@ -54,6 +54,10 @@ body {
 }
 
 footer {
-    background-color: white;
-    text-align: center;
+    color: #888;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5em;
 }
