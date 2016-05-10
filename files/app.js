@@ -14,13 +14,19 @@ var app = angular.module('PingCheck', [])
     }
 
     $scope.stop = function () {
+        ga('send', 'event', 'pingcheck', 'stop', null, $scope.count);
         if ($ping.defer)
             $ping.defer.reject();
+    };
+    
+    $scope.copy = function (item) {
+        ga('send', 'event', 'server', 'copy', item.ip);
     };
 
     var promise = null;
 
     $scope.begin = function () {
+        ga('send', 'event', 'pingcheck', 'start');
         promise = $q.all([]);
         $scope.count = 0;
         $scope.ready = false;
@@ -111,6 +117,7 @@ var app = angular.module('PingCheck', [])
         restrict: 'A',
         link: function (scope, element, attrs) {
             element.on('click', function () {
+                ga('send', 'event', 'server', 'click', this.value);
                 if (!$window.getSelection().toString()) {
                     this.setSelectionRange(0, this.value.length)
                 }
