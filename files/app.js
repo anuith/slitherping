@@ -138,7 +138,6 @@ var app = angular.module('PingCheck', [])
         restrict: 'A',
         link: function (scope, element, attrs) {
             element.on('click', function () {
-                ga('send', 'event', 'server', 'click', this.value);
                 if (!$window.getSelection().toString()) {
                     this.setSelectionRange(0, this.value.length)
                 }
