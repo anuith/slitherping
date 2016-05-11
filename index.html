@@ -36,7 +36,7 @@
             <h1>Slither.io Ping Check</h1>
         </header>
         <p class="text-center">
-            Finds the least ping server for <a target="_blank" href="http://slither.io">Slither.io</a> game with maximum ping of <em>300ms</em>.
+            Find the least ping server for <a target="_blank" href="http://slither.io">Slither.io</a> game with maximum ping of <em>{{maxPing}}ms</em>.
             <br/> Use with the <a target="_blank" href="https://chrome.google.com/webstore/detail/slitherio-mods/cnlenmmkifnhllnjfoangnjokeadhbbk">Slither.io Mod</a> extension for Google Chrome or any similar mods which allows you to input the server address.
         </p>
         <div id="actions" class="text-center">
@@ -58,7 +58,7 @@
                 <th>IP Address</th>
                 <th>Ping</th>
             </tr>
-            <tr ng-repeat="item in iptable | orderBy: 'ping' | filter: isPing as filteredList">
+            <tr ng-repeat="item in iptable | orderBy: 'ping' | limitTo: maxcount as filteredList">
                 <td>{{$index + 1}}</td>
                 <td>
                     <input class="item-ip" readonly value="{{item.ip}}" select-on-click ng-copy="copy(item)" />
