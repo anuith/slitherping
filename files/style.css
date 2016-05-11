@@ -1,14 +1,27 @@
+html, body {
+    font-family: sans-serif;
+}
+
 body {
     background-color: #f4f4f4;
 }
 
+a:link, a:link:hover, a:visited {
+    color: dodgerblue;
+    text-decoration: none;
+}
+
+a:link:hover {
+    color: crimson;
+}
+
 .wrap {
     background-color: white;
-    margin: auto;
+    margin: 1em auto;
     padding: 12px;
     max-width: 640px;
     width: 80%;
-    box-shadow: 0 3px 5px #888;
+    box-shadow: 0 2px 5px #888;
     border-radius: 2px
 }
 
