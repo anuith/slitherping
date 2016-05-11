@@ -11,7 +11,7 @@ var app = angular.module('PingCheck', [])
     $scope.working = false;
     $scope.okcount = 0;
     $scope.maxcount = 25;
-    
+
     var okping = 200;
 
     $scope.pingFilter = function (item) {
@@ -145,4 +145,6 @@ var app = angular.module('PingCheck', [])
             });
         }
     };
+}]).run(['$rootScope', function ($root) {
+    $root.ready = true;
 }]);

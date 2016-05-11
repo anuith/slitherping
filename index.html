@@ -19,6 +19,7 @@
 
     <title>Slither.io ping check</title>
 
+    <link rel="stylesheet" href="files/style.css">
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -30,33 +31,35 @@
     </script>
 </head>
 
-<body ng-controller="MainCtrl">
-    <div class="wrap">
-        <header class="text-center">
-            <h1>Slither.io ping check</h1>
-        </header>
-        <p class="text-center">
-            Find the least ping server for <a target="_blank" href="http://slither.io">Slither.io</a> game with maximum ping of <em>{{maxPing}}ms</em>.
-            <br/> Use with the <a target="_blank" href="https://chrome.google.com/webstore/detail/slitherio-mods/cnlenmmkifnhllnjfoangnjokeadhbbk">Slither.io Mod</a> extension for Google Chrome or any similar mods which allows you to input the server address.
-        </p>
-        <div id="actions" class="text-center">
-            <button id="btn-start" class="btn btn-primary" ng-hide="working" ng-disabled="!ready" ng-click="begin();">Start</button>
-            <button id="btn-stop" class="btn btn-danger" ng-show="working" ng-click="stop();">Stop</button>
-        </div>
+<body ng-controller="MainCtrl" ng-class="{ready: $root.ready}">
+    <header class="text-center">
+        <img id="imgheader" src="files/header.png" />
+        <div class="loading text-center">Loading . . .</div>
+    </header>
+    <p class="text-center">
+        Find the least ping server for <a target="_blank" href="http://slither.io">Slither.io</a> game with maximum ping of <em>{{maxPing}}ms</em>.
+        <br/> Use with the <a target="_blank" href="https://chrome.google.com/webstore/detail/slitherio-mods/cnlenmmkifnhllnjfoangnjokeadhbbk">Slither.io Mod</a> extension for Google Chrome or any similar mods which allows you to input the server address.
+    </p>
+
+    <div id="actions" class="text-center">
+        <button id="btn-start" class="btn btn-primary" ng-hide="working" ng-disabled="!ready" ng-click="begin();">Start</button>
+        <button id="btn-stop" class="btn btn-danger" ng-show="working" ng-click="stop();">Stop</button>
+    </div>
+    <div id="progress" class="text-center" ng-show="working">
+        <span>working . . .  {{count}} / {{allcount}}</span>
         <br/>
-        <div id="progress" class="text-center" ng-show="working">
-            <span>working . . .  {{count}} / {{allcount}}</span>
-            <br/>
-            <progress value="{{count}}" max="{{allcount}}"></progress>
-        </div>
-        <div ng-show="count == allcount && filteredList.length == 0">
+        <progress value="{{count}}" max="{{allcount}}"></progress>
+    </div>
+
+    <div class="wrap">
+        <div class="text-center" ng-show="count == allcount && filteredList.length == 0">
             Not found any good server. Check your internet.
         </div>
         <table id="iptable" ng-show="filteredList.length">
             <tr>
                 <th>#</th>
                 <th>IP Address</th>
-                <th>Ping</th>
+                <th>Latency</th>
             </tr>
             <tr ng-repeat="item in iptable | orderBy: 'ping' | limitTo: maxcount as filteredList">
                 <td>{{$index + 1}}</td>
@@ -77,8 +80,6 @@
 
     <script src="//code.angularjs.org/1.5.5/angular.min.js"></script>
     <script src="files/app.js"></script>
-
-    <link rel="stylesheet" href="files/style.css">
 </body>
 
 </html>

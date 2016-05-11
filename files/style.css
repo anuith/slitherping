@@ -1,4 +1,7 @@
-html, body {
+html,
+body {
+    margin: 0;
+    padding: 0;
     font-family: sans-serif;
 }
 
@@ -6,23 +9,35 @@ body {
     background-color: #f4f4f4;
 }
 
-a:link, a:link:hover, a:visited {
+body > *:not(header) {
+    opacity: 0;
+}
+
+body.ready > * {
+    opacity: 1;
+    transition: opacity 0.5s linear;
+}
+
+body.ready .loading {
+    display: none;
+}
+
+a:link,
+a:visited {
     color: dodgerblue;
     text-decoration: none;
 }
 
-a:link:hover {
+a:link:hover,
+a:visited:hover {
     color: crimson;
 }
 
 .wrap {
     background-color: white;
     margin: 1em auto;
-    padding: 12px;
-    max-width: 640px;
-    width: 80%;
-    box-shadow: 0 2px 5px #888;
-    border-radius: 2px
+    width: 100%;
+    box-shadow: 0 0 6px #888;
 }
 
 .text-center {
@@ -30,11 +45,20 @@ a:link:hover {
 }
 
 .btn {
-    cursor: pointer;
     font-weight: bold;
     background-color: #eee;
     border-radius: 3px;
     border: none;
+}
+
+.btn:not(:disabled):hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.btn:disabled {
+    color: #ddd;
+    opacity: 0.5;
 }
 
 .btn-primary {
@@ -50,6 +74,11 @@ a:link:hover {
 .btn-info {
     color: white;
     background-color: deepskyblue;
+}
+
+#imgheader {
+    max-height: 100px;
+    max-width: 50%;
 }
 
 #actions .btn {
