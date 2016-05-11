@@ -12,8 +12,38 @@ body {
     border-radius: 2px
 }
 
+.text-center {
+    text-align: center;
+}
+
+.btn {
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #eee;
+    border-radius: 3px;
+    border: none;
+}
+
+.btn-primary {
+    color: white;
+    background-color: dodgerblue;
+}
+
+.btn-danger {
+    color: white;
+    background-color: crimson;
+}
+
+.btn-info {
+    color: white;
+    background-color: deepskyblue;
+}
+
 #actions .btn {
-    padding: 0.5em 3em;
+    min-height: 2.5em;
+    min-width: 6em;
+    padding: 0.3em;
+    line-height: 0.9;
 }
 
 #progress progress {
