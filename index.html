@@ -1,85 +1,12 @@
 <!doctype html>
-<html ng-app="PingCheck">
+<html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta property="og:image" content="https://anuith.github.io/slitherpingcheck/files/cover.jpg" />
-    <meta property="og:url" content="https://anuith.github.io/slitherpingcheck" />
-    <meta property="og:title" content="Slither.io ping check - lag no more" />
-    <meta property="og:description" content="Finds the best server for you to play with your friends." />
-    <meta property="fb:app_id" content="443372449114526" />
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@baagamesdotcom">
-    <meta name="twitter:creator" content="@anuith">
-    <meta name="twitter:title" content="Slither.io ping check - lag no more">
-    <meta name="twitter:description" content="Finds the best server for you to play with your friends.">
-    <meta name="twitter:image" content="https://anuith.github.io/slitherpingcheck/files/cover.jpg">
-
-    <title>Slither.io ping check</title>
-
-    <link rel="stylesheet" href="files/style.css">
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-44134537-3', 'auto');
-      ga('send', 'pageview');
-    </script>
+    <meta http-equiv="refresh" content="0; URL='//baagames.com/slitherio-pingcheck'" />
 </head>
 
-<body ng-controller="MainCtrl" ng-class="{ready: $root.ready}">
-    <header class="text-center">
-        <img id="imgheader" src="files/header.png" />
-        <div class="loading text-center">Loading . . .</div>
-    </header>
-    <p class="text-center">
-        Find the least ping server for <a target="_blank" href="http://slither.io">Slither.io</a> game with maximum ping of <em>{{maxPing}}ms</em>.
-        <br/> Use with the <a target="_blank" href="https://chrome.google.com/webstore/detail/slitherio-mods/cnlenmmkifnhllnjfoangnjokeadhbbk">Slither.io Mod</a> extension for Google Chrome or any similar mods which allows you to input the server address.
-    </p>
-
-    <div id="actions" class="text-center">
-        <button id="btn-start" class="btn btn-primary" ng-hide="working" ng-disabled="!ready" ng-click="begin();">Start</button>
-        <button id="btn-stop" class="btn btn-danger" ng-show="working" ng-click="stop();">Stop</button>
-    </div>
-    <div id="progress" class="text-center" ng-show="working">
-        <span>working . . .  {{count}} / {{allcount}}</span>
-        <br/>
-        <progress value="{{count}}" max="{{allcount}}"></progress>
-    </div>
-
-    <div class="wrap">
-        <div class="text-center" ng-show="count == allcount && filteredList.length == 0">
-            Not found any good server. Check your internet.
-        </div>
-        <table id="iptable" ng-show="filteredList.length">
-            <tr>
-                <th>#</th>
-                <th>IP Address</th>
-                <th>Latency</th>
-            </tr>
-            <tr ng-repeat="item in iptable | orderBy: 'ping' | limitTo: maxcount as filteredList">
-                <td>{{$index + 1}}</td>
-                <td>
-                    <input class="item-ip" readonly value="{{item.ip}}" select-on-click ng-copy="copy(item)" />
-                </td>
-                <td class="item-ping">{{item.ping}}</td>
-            </tr>
-        </table>
-    </div>
-    <footer class="text-center">by anuith@<a target="_blank" href="http://www.baagames.com">BaaGames.com</a></footer>
-
-    <p id="disclaimer" class="text-center">
-        This tool uses a simple techniques to calculate amount of time the server responds to http request.
-        <br/>The values here may not be real <em>ping</em> of the servers.
-        <br/>However this may help find the suitable server for you to play Slither.io game.
-    </p>
-
-    <script src="//code.angularjs.org/1.5.5/angular.min.js"></script>
-    <script src="files/app.js"></script>
+<body style="font-family: sans-serif; text-align: center;">
+    <p>Redirecting . . .</p>
 </body>
 
 </html>
