@@ -66,9 +66,9 @@ var app = angular.module('PingCheck', [])
         });
     };
 
-    $q.all([$ping.getIptable()]).then(function (iptable) {
+    $ping.getIptable().then(function (iptable) {
         $scope.ready = true;
-        $scope.iptable = iptable[0];
+        $scope.iptable = iptable;
         $scope.allcount = $scope.iptable.length;
     });
 }]).service('pingCheckService', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
