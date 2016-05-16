@@ -1,7 +1,6 @@
-var app = angular.module('PingCheck', [])
+var app = angular.module('PingCheck', []);
 
-.controller('MainCtrl', ['$scope', '$filter', '$q', 'pingCheckService', function ($scope, $filter, $q, $ping) {
-    $scope.name = "man";
+app.controller('MainCtrl', ['$scope', '$q', 'pingCheckService', function ($scope, $q, $ping) {
     $scope.iptable = [];
     $scope.maxPing = 300;
     $scope.count = 0;
@@ -22,7 +21,7 @@ var app = angular.module('PingCheck', [])
 
     $scope.stop = function (track) {
         if ('undefined' == typeof (track)) track = true;
-        track && ga('send', 'event', 'pingcheck', 'stop', null, $scope.count);
+        track && ga('send', 'event', 'slither-pingcheck', 'ping-stop', null, $scope.count);
         if ($ping.defer)
             $ping.defer.reject();
     };
@@ -33,7 +32,7 @@ var app = angular.module('PingCheck', [])
     });
 
     $scope.copy = function (item) {
-        ga('send', 'event', 'server', 'copy', item.ip);
+        ga('send', 'event', 'slither-pingcheck', 'server-copy', item.ip);
     };
 
     var promise = null;
@@ -42,7 +41,7 @@ var app = angular.module('PingCheck', [])
         if ('undefined' == typeof (maxPing)) $ping.maxPing = $scope.maxPing / 1.5;
         else $ping.maxPing = maxPing / 1.5;
 
-        ga('send', 'event', 'pingcheck', 'start');
+        ga('send', 'event', 'slither-pingcheck', 'ping-start');
         promise = $q.all([]);
         $scope.count = 0;
         $scope.okcount = 0;
@@ -71,7 +70,7 @@ var app = angular.module('PingCheck', [])
         $scope.iptable = iptable;
         $scope.allcount = $scope.iptable.length;
     });
-}]).service('pingCheckService', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
+    }]).service('pingCheckService', ['$http', '$q', '$timeout', function ($http, $q, $timeout) {
     var self = this;
 
     function millis() {
@@ -119,7 +118,7 @@ var app = angular.module('PingCheck', [])
         }, self.maxPing * 1.5);
 
         return defer.promise;
-    }
+    };
 
     this.getIptable = function () {
         return $http.get('files/iptable.json').then(function (r) {
@@ -132,8 +131,8 @@ var app = angular.module('PingCheck', [])
             });
             return iptable;
         });
-    }
-}]).directive('selectOnClick', ['$window', function ($window) {
+    };
+    }]).directive('selectOnClick', ['$window', function ($window) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
@@ -144,6 +143,6 @@ var app = angular.module('PingCheck', [])
             });
         }
     };
-}]).run(['$rootScope', function ($root) {
+    }]).run(['$rootScope', function ($root) {
     $root.ready = true;
-}]);
+    }]);
