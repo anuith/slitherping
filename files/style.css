@@ -24,7 +24,7 @@ body.ready .loading {
 
 a:link,
 a:visited {
-    color: dodgerblue;
+    color: #c1272d;
     text-decoration: none;
 }
 
@@ -38,6 +38,11 @@ a:visited:hover {
     margin: 1em auto;
     width: 100%;
     box-shadow: 0 0 6px #888;
+}
+
+#bg-header {
+    background-color: #16171b;
+    text-align: center;
 }
 
 .text-center {
@@ -63,17 +68,12 @@ a:visited:hover {
 
 .btn-primary {
     color: white;
-    background-color: dodgerblue;
+    background-color: #c1272d;
 }
 
-.btn-danger {
+.btn-default {
     color: white;
-    background-color: crimson;
-}
-
-.btn-info {
-    color: white;
-    background-color: deepskyblue;
+    background-color: #060608;
 }
 
 #imgheader {
